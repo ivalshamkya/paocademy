@@ -9,7 +9,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<
         <>
             <Head title="Welcome" />
             <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
+                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end items-center flex">
                     {auth.user ? (
                         <Link
                             href={route('dashboard')}
@@ -33,7 +33,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<
                                 Register
                             </Link>
 
-                           <ThemeSwitcher />
+                           <ThemeSwitcher type={'button'} className='ms-4'/>
                         </>
                     )}
                 </div>

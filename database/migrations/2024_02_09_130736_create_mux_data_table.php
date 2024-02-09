@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('mux_data', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
+            $table->string('asset_id');
+            $table->string('playback_id')->nullable();
+            $table->bigInteger('chapter_id')->unique();
             $table->timestamps();
+
+            $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('cascade');
         });
     }
 
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('mux_data');
     }
 };
