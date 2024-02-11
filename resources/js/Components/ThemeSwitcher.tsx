@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { IoIosMoon, IoIosSunny } from 'react-icons/io';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { RxMoon } from 'react-icons/rx';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> { }
 
-export default function ThemeSwitcher({ ...props } : Props) {
+export default function ThemeSwitcher({ ...props }: Props) {
 
     const currentTheme = (() => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
@@ -32,18 +34,15 @@ export default function ThemeSwitcher({ ...props } : Props) {
 
     return (
         <>
-            <button
-                {...props}
-                type="button"
-                onClick={toggleDarkMode}
-                className="font-semibold text-2xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-            >
-                {theme === "light" ?
-                    <IoIosSunny />
-                    :
-                    <IoIosMoon />
-                }
-            </button>
+            <DropdownMenu>
+                <DropdownMenuTrigger>
+                    <RxMoon className="text-primary"></RxMoon>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                    <DropdownMenuItem onClick={() => { setTheme("light") }}>Light</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => { setTheme("dark") }}>Dark</DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
         </>
     )
 }
