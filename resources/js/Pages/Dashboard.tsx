@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { PageProps } from '@/types';
-import MetaHead from '@/Components/MetaHead';
+import MetaHead from '@/components/MetaHead';
 
 export default function Dashboard({ auth }: PageProps) {
     return (
